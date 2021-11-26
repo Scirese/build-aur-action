@@ -8,6 +8,6 @@ inputs:
     required: true
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://ghcr.io/clansty/build-aur-action:master'
   args:
     - ${{ inputs.repo-name }}
