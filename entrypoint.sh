@@ -2,7 +2,7 @@
 
 pkgname=$1
 
-yay -Sy
+yay -Syu
 
 useradd builder -m
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
