@@ -6,6 +6,10 @@ inputs:
   repo-name:
     description: 'AUR repository name to build'
     required: true
+outputs:
+  filelist:
+    value: ${{ steps.check-db.outputs.is-needed }}
+
 runs:
   using: 'docker'
   image: 'docker://ghcr.io/clansty/build-aur-action:master'

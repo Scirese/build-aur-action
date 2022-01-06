@@ -9,3 +9,6 @@ echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 chmod -R a+rw .
 
 sudo --set-home -u builder yay -Sa --noconfirm --builddir=./ "$pkgname"
+
+cd $pkgname
+echo ::set-output name=filelist::$(makepkg --packagelist | xargs)
