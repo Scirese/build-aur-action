@@ -11,4 +11,4 @@ chmod -R a+rw .
 sudo --set-home -u builder yay -Sa --noconfirm --builddir=./ "$pkgname"
 
 cd $pkgname
-echo ::set-output name=filelist::$(makepkg --packagelist | xargs)
+echo ::set-output name=filelist::$(sudo --set-home -u builder makepkg --packagelist | xargs)
