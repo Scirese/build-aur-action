@@ -11,9 +11,8 @@ RUN cat ./pacman.conf.add >> /etc/pacman.conf
 
 RUN pacman-key --init
 RUN pacman -Syu --noconfirm
-RUN pacman -S base-devel git --noconfirm
 RUN pacman -S --noconfirm archlinuxcn-keyring
-RUN pacman -S --noconfirm yay
+RUN pacman -S --noconfirm base-devel git yay nodejs-lts-gallium jdk11-openjdk
 
 
 
