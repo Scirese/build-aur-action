@@ -22,4 +22,4 @@ else
   sudo --set-home -u builder yay -S --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
   sudo --set-home -u builder CARCH=$ARCH makepkg -sfA
 fi
-echo ::set-output name=filelist::$(sudo --set-home -u builder makepkg --packagelist | xargs)
+echo ::set-output name=filelist::$(sudo --set-home -u builder CARCH=$ARCH makepkg --packagelist | xargs)
