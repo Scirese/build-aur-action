@@ -7,4 +7,4 @@ Server = https://repo.archlinuxcn.org/x86_64
 
 [Clansty]
 SigLevel = Never
-Server = https://dl.lwqwq.com/repo/x86_64
+Server = https://repo.lwqwq.com/archlinux/x86_64
