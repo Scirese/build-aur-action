@@ -17,9 +17,9 @@ chmod -R a+rw .
 
 if [[ $ARCH == "x86_64" ]]; then
   sudo --set-home -u builder yay -Sa --noconfirm --useask --builddir=./ "$pkgname"
+  cd $pkgname
 else
   sudo --set-home -u builder yay -S --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
   sudo --set-home -u builder CARCH=$ARCH makepkg -sfA
 fi
-cd $pkgname
 echo ::set-output name=filelist::$(sudo --set-home -u builder makepkg --packagelist | xargs)
