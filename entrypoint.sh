@@ -6,7 +6,7 @@ yay -Syu
 
 useradd builder -m
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-echo 'PACKAGER=Clansty <i@gao4.pw>
+echo 'PACKAGER="Clansty <i@gao4.pw>"
 COMPRESSZST=(zstd -19 -c -z -q --threads=0 -)' > /home/builder/.makepkg.conf
 
 if [[ $ARCH != "x86_64" ]]; then
