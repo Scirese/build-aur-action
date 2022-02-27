@@ -4,10 +4,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN date
 
 WORKDIR /tmp
-COPY pacman.conf.add ./
-
-RUN cat ./pacman.conf.add >> /etc/pacman.conf
-
+COPY pacman.conf /etc/pacman.conf
 
 RUN pacman-key --init
 RUN pacman -Syu --noconfirm
