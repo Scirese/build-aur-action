@@ -18,10 +18,10 @@ fi
 chmod -R a+rw .
 
 if [[ $ARCH == "x86_64" ]]; then
-  sudo --set-home -u builder yay -Sa --noconfirm --useask --skippgpcheck --builddir=./ "$pkgname"
+  sudo --set-home -u builder yay -Sa --noconfirm --useask --skippgpcheck --builddir=./ --overwrite='*' "$pkgname"
   cd $pkgname
 else
-  sudo --set-home -u builder yay -S --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
+  sudo --set-home -u builder yay -S --noconfirm --needed --asdeps --overwrite='*' "${makedepends[@]}" "${depends[@]}"
   sudo --set-home -u builder CARCH=$ARCH makepkg -sfA --skipinteg --nodeps
 fi
 echo ::set-output name=filelist::$(sudo --set-home -u builder CARCH=$ARCH makepkg --packagelist | xargs)
