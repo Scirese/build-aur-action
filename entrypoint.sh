@@ -18,7 +18,7 @@ fi
 chmod -R a+rw .
 
 if [[ $ARCH == "x86_64" ]]; then
-  sudo --set-home -u builder yay -Sa --noconfirm --useask --skippgpcheck --builddir=./ --overwrite='*' "$pkgname"
+  sudo --set-home -u builder yay -Sa --noconfirm --useask --builddir=./ --overwrite='*' "$pkgname" --mflags --skipinteg
   cd $pkgname
 else
   sudo --set-home -u builder yay -S --noconfirm --needed --asdeps --overwrite='*' "${makedepends[@]}" "${depends[@]}"
