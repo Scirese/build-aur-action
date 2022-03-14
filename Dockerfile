@@ -5,6 +5,7 @@ RUN date
 
 WORKDIR /tmp
 COPY pacman.conf /etc/pacman.conf
+COPY pacman32.conf /etc/pacman32.conf
 
 RUN pacman-key --init
 RUN pacman -Syu --noconfirm
