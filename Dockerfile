@@ -10,7 +10,7 @@ COPY pacman32.conf /etc/pacman32.conf
 RUN pacman-key --init
 RUN pacman -Syu --noconfirm
 RUN pacman -S --noconfirm archlinuxcn-keyring
-RUN pacman -S --noconfirm base-devel git yay nodejs-lts-gallium jdk11-openjdk
+RUN pacman -S --noconfirm base-devel git yay nodejs-lts-gallium jdk11-openjdk go
 
 
 
