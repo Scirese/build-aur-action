@@ -9,10 +9,8 @@ echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 echo 'PACKAGER="Clansty <i@gao4.pw>"
 COMPRESSZST=(zstd -19 -c -z -q --threads=0 -)' > /home/builder/.makepkg.conf
 
-if [[ $ARCH == "aarch64" ]]; then
-  git clone https://aur.archlinux.org/$pkgname.git
-  cd $pkgname
-  source PKGBUILD
+if [[ $ARCH == "x86_64" ]]; then
+  # 什么也不做
 elif [[ $ARCH == "i686" ]]; then
   export CFLAGS+=" -m32"
   export CXXFLAGS+=" -m32"
@@ -21,6 +19,10 @@ elif [[ $ARCH == "i686" ]]; then
   rm /etc/pacman.conf
   mv /etc/pacman32.conf /etc/pacman.conf
   pacman -Syy
+else
+  git clone https://aur.archlinux.org/$pkgname.git
+  cd $pkgname
+  source PKGBUILD
 fi
 
 chmod -R a+rw .
