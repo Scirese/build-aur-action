@@ -10,7 +10,7 @@ echo 'PACKAGER="Clansty <i@gao4.pw>"
 COMPRESSZST=(zstd -19 -c -z -q --threads=0 -)' > /home/builder/.makepkg.conf
 
 if [[ $ARCH == "x86_64" ]]; then
-  # 什么也不做
+  echo qwq
 elif [[ $ARCH == "i686" ]]; then
   export CFLAGS+=" -m32"
   export CXXFLAGS+=" -m32"
