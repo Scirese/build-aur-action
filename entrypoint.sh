@@ -29,14 +29,7 @@ fi
 
 chmod -R a+rw .
 
-if [[ $ARCH == "x86_64" ]]; then
-  sudo --set-home -u builder yay -Sa --noconfirm --useask --builddir=./ --overwrite='*' "$pkgname" --mflags --skipinteg
-  cd $pkgname
-elif [[ $ARCH == "i686" ]]; then
-  sudo --set-home -u builder linux32 yay -Sa --noconfirm --useask --builddir=./ --overwrite='*' "$pkgname" --mflags --skipinteg
-  cd $pkgname
-else
-  sudo --set-home -u builder yay -S --noconfirm --needed --asdeps --overwrite='*' "${makedepends[@]}" "${depends[@]}"
-  sudo --set-home -u builder CARCH=$ARCH makepkg -sfA --skipinteg --nodeps
-fi
+sudo --set-home -u builder yay -S --noconfirm --useask --needed --asdeps --overwrite='*' "${makedepends[@]}" "${depends[@]}"
+sudo --set-home -u builder CARCH=$ARCH makepkg -sfA --skipinteg --nodeps
+
 echo ::set-output name=filelist::$(sudo --set-home -u builder CARCH=$ARCH makepkg --packagelist | xargs)
