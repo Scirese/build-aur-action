@@ -20,7 +20,9 @@ elif [[ $ARCH == "i686" ]]; then
   mv /etc/pacman32.conf /etc/pacman.conf
   pacman -Syy
 else
-  git clone https://aur.archlinux.org/$pkgname.git
+  if [[ $pkgname != ./* ]];then
+    git clone https://aur.archlinux.org/$pkgname.git
+  fi # 否则为本地包
   cd $pkgname
   source PKGBUILD
 fi
